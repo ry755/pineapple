@@ -23,7 +23,7 @@
 
 static const char CursorOff[] = "\x1b[?25l";
 static const char CursorOn[] = "\x1b[?25h";
-static const char CursorMove[] = "\x1b[%d;%dH";
+static const char CursorMove[] = "\x1b[%lu;%luH";
 
 static TScreenStatus scrstat;
 extern "C"
@@ -41,19 +41,21 @@ int lua_setcpos(lua_State* state) {
 extern "C"
 int lua_getcursor(lua_State* state) {
     TScreenStatus status = CKernel::Get()->mScreen.GetStatus();
+    int rows = CKernel::Get()->mScreen.GetRows();
+    int cols = CKernel::Get()->mScreen.GetColumns();
 
-    lua_pushnumber(state, status.nCursorX);
-    lua_pushnumber(state, status.nCursorY);
+    lua_pushnumber(state, status.nCursorX / cols);
+    lua_pushnumber(state, status.nCursorY / rows);
     return 2;
 }
 
 extern "C"
 int lua_setcursor(lua_State* state) {
-    lua_Integer x = luaL_checkinteger(state, 1);
-    lua_Integer y = luaL_checkinteger(state, 2);
+    lua_Integer row = luaL_checkinteger(state, 1);
+    lua_Integer col = luaL_checkinteger(state, 2);
 
     char move_string[20];
-    int length = sprintf(move_string, CursorMove, (int) y, (int) x);
+    int length = sprintf(move_string, CursorMove, row, col);
     CKernel::Get()->mScreen.Write(move_string, length);
     return 0;
 }
