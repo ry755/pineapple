@@ -20,6 +20,7 @@ This has only been tested on a Raspberry Pi 1 B+. It *should* run on any model t
 
 To build Circle, circle-stdlib, and Pineapple:
 ```sh
+./configure -r 1 # replace 1 with your Pi model, only needed for the first build
 make libs # only needed for the first build
 make
 ```

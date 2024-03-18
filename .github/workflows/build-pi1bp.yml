@@ -1,0 +1,42 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - 'root/**'
+
+name: Build for Pi 1 B+
+
+jobs:
+  build-pi1bp:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install gcc-arm-none-eabi
+        run: |
+          sudo apt update
+          sudo apt install -y gcc-arm-none-eabi
+
+      - name: Build
+        run: |
+          ./configure -r 1
+          make libs
+          make
+
+      - name: Upload IMG Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: kernel.img
+          path: kernel.img
+
+      - name: Upload ELF Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: kernel.elf
+          path: kernel.elf

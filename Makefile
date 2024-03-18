@@ -27,7 +27,7 @@ LIBS := \
 -include $(DEPS)
 
 libs:
-	cd circle-stdlib && ./configure -r $(PI) && $(MAKE)
+	$(MAKE) -C $(CSTDLIB)
 	$(MAKE) -C $(CIRCLEHOME)/addon/fatfs
 	$(MAKE) -C $(CIRCLEHOME)/addon/SDCard
 	$(MAKE) -C $(LUADIR) liblua.a
