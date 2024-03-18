@@ -16,7 +16,7 @@ I realize that this is a strange name for it. However, I don't consider this to 
 
 First, ensure you clone this repository with `--recursive` in order to clone all of the required submodules. Then run the applicable commands below. If booting on a real Raspberry Pi, copy the contents of the `root` folder to your SD card, along with the firmware files downloaded by the command below.
 
-This has only been tested on a Raspberry Pi 1 B+. It *should* run on any model that Circle is compatible with, which at the time of writing is all models up to the Raspberry Pi 5, but I can not guarantee that. To build for a different model, modify the `PI` variable at the top of the Makefile before running `make libs`.
+This has only been tested on a Raspberry Pi 1 B+. It *should* run on any model that Circle is compatible with, which at the time of writing is all models up to the Raspberry Pi 5, but I can not guarantee that.
 
 To build Circle, circle-stdlib, and Pineapple:
 ```sh
