@@ -1,0 +1,16 @@
+This is the LUPOS REPL modified for Pineapple. Whatever you type is evaluated as a
+Lua statement, the result is printed. For global functions without arguments the REPL
+adds the (). This way you may type 'dir' or 'path' instead of 'dir()' and 'path()'.
+Paramters are provided in a single  string. Lua allows omiting the () in that case,
+you can type 'dir"*.lua?l"' or 'copy"paper.txt>paper.bak"'.
+
+dir       : list files in folder                 path      : get current path
+go        : go to path/volume                    up        : go up one folder
+attr      : show and/or set/delete file attr     copy      : copy file(s)
+ren       : rename or move file(s) (also: move)  list      : show file contents
+del       : delete file(s)                       folder    : make new folder(s)
+vol       : list active volumes                  free      : show space left on volume
+clear     : clear the screen                     ple       : text editor
+
+Many of these give more help when called with the parameter "??". Example: dir"??"
+Options to modify the operation may be given with a '?'. Example: dir"*.lua?ltr"

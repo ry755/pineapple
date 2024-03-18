@@ -1,0 +1,8 @@
+.vscode
+
+*.elf
+*.img
+*.lst
+*.map
+**/*.d
+**/*.o
