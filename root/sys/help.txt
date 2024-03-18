@@ -1,7 +1,7 @@
 This is the LUPOS REPL modified for Pineapple. Whatever you type is evaluated as a
 Lua statement, the result is printed. For global functions without arguments the REPL
 adds the (). This way you may type 'dir' or 'path' instead of 'dir()' and 'path()'.
-Paramters are provided in a single  string. Lua allows omiting the () in that case,
+Paramters are provided in a single string. Lua allows omiting the () in that case,
 you can type 'dir"*.lua?l"' or 'copy"paper.txt>paper.bak"'.
 
 dir       : list files in folder                 path      : get current path
