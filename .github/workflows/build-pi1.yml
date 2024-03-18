@@ -6,8 +6,9 @@ on:
     paths-ignore:
       - 'docs/**'
       - 'root/**'
+      - 'README.md'
 
-name: Build for Pi 1 B+
+name: Build for Pi 1
 
 jobs:
   build-pi1bp:

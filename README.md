@@ -2,7 +2,7 @@
 
 **Pineapple** is a work-in-progress Lua-based fantasy operating system for Raspberry Pi. It utilizes [Circle](https://github.com/rsta2/circle) and [circle-stdlib](https://github.com/smuehlst/circle-stdlib) to create a minimal bootable system. In other words, it runs "bare metal" and does not use Linux. Pineapple is inspired by and partially based on [LUPOS](https://github.com/olfp/lupos).
 
-Due to being a work-in-progress project, no stable builds will be provided for now. See the **Building** section below for instructions.
+Due to being a work-in-progress project, no stable builds will be provided for now. However, automated builds are provided for Pi 1 models, see the [Actions](https://github.com/ry755/pineapple/actions) tab for downloads.
 
 ### Fantasy... OS??
 
