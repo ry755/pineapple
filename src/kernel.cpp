@@ -24,6 +24,7 @@
 #include <lua.hpp>
 #include "lconsole.h"
 #include "lfilesystem.h"
+#include "lgfx.h"
 
 extern "C"
 int lua_interface();
@@ -74,6 +75,8 @@ int lua_interface() {
     lua_setglobal(state, "console");
     lua_open_filesystem(state);
     lua_setglobal(state, "filesystem");
+    lua_open_gfx(state);
+    lua_setglobal(state, "gfx");
     lua_register(state, "reboot", lua_reboot);
     int result = luaL_loadfile(state, BOOT_FILE);
     if (result != LUA_OK && result != LUA_ERRFILE) {

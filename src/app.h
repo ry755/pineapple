@@ -2,6 +2,7 @@
 #ifndef _square_app_h
 #define _square_app_h
 
+#include <circle/2dgraphics.h>
 #include <circle/actled.h>
 #include <circle/string.h>
 #include <circle/koptions.h>
@@ -88,6 +89,7 @@ class CStdlibAppScreen : public CStdlibApp
 public:
         CStdlibAppScreen(const char *kernel)
                 : CStdlibApp (kernel),
+                  mGfx (mOptions.GetWidth (), mOptions.GetHeight (), FALSE),
                   mScreen (mOptions.GetWidth (), mOptions.GetHeight ()),
                   mTimer (&mInterrupt),
                   mLogger (mOptions.GetLogLevel (), &mTimer)
@@ -97,6 +99,11 @@ public:
         virtual bool Initialize (void)
         {
                 if (!CStdlibApp::Initialize ())
+                {
+                        return false;
+                }
+
+                if (!mGfx.Initialize ())
                 {
                         return false;
                 }
@@ -126,6 +133,7 @@ public:
                 return mTimer.Initialize ();
         }
 
+        C2DGraphics     mGfx;
         CScreenDevice   mScreen;
         CSerialDevice   mSerial;
         CTimer          mTimer;

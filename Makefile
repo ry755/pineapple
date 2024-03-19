@@ -7,7 +7,7 @@ CIRCLEHOME = circle-stdlib/libs/circle
 NEWLIBDIR = circle-stdlib/install/$(NEWLIB_ARCH)
 LUADIR = lua-5.4.6/src
 
-OBJS = src/main.o src/kernel.o src/lconsole.o src/lfilesystem.o
+OBJS = src/main.o src/kernel.o src/lconsole.o src/lfilesystem.o src/lgfx.o
 
 include $(CIRCLEHOME)/Rules.mk
 
@@ -27,6 +27,7 @@ LIBS := \
 -include $(DEPS)
 
 libs:
+	cd $(CIRCLEHOME) && git apply ../../../src/gfx_buffer.patch # hack to fully disable double buffering
 	$(MAKE) -C $(CSTDLIB)
 	$(MAKE) -C $(CIRCLEHOME)/addon/fatfs
 	$(MAKE) -C $(CIRCLEHOME)/addon/SDCard

@@ -1,0 +1,22 @@
+diff --git a/lib/2dgraphics.cpp b/lib/2dgraphics.cpp
+index 5ae01af..f31d748 100644
+--- a/lib/2dgraphics.cpp
++++ b/lib/2dgraphics.cpp
+@@ -48,7 +48,7 @@ C2DGraphics::~C2DGraphics (void)
+ boolean C2DGraphics::Initialize (void)
+ {
+ 	m_pFrameBuffer = new CBcmFrameBuffer (m_nWidth, m_nHeight, DEPTH, m_nWidth, 2*m_nHeight,
+-					      m_nDisplay, TRUE);
++					      m_nDisplay, FALSE);
+ 	
+ #if DEPTH == 8
+ 	m_pFrameBuffer->SetPalette (RED_COLOR, RED_COLOR16);
+@@ -76,7 +76,7 @@ boolean C2DGraphics::Initialize (void)
+ 	m_baseBuffer = (TScreenColor *) (uintptr) m_pFrameBuffer->GetBuffer();
+ 	m_nWidth = m_pFrameBuffer->GetWidth();
+ 	m_nHeight = m_pFrameBuffer->GetHeight();
+-	m_Buffer = m_baseBuffer + m_nWidth * m_nHeight;
++	m_Buffer = m_baseBuffer;
+ 	
+ 	return TRUE;
+ }
