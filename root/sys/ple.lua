@@ -1163,6 +1163,7 @@ function ple(fname)
 	term.reset()
 	-- run the application in a protected call so we can properly reset
 	-- the tty mode and display a traceback in case of error
+	core.quit = false
 	local ok, msg = xpcall(editor_loop, debug.traceback, ll, fname)
 	-- restore terminal in a a clean state
 	term.show() -- show cursor
