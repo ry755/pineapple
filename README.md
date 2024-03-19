@@ -8,9 +8,11 @@ Due to being a work-in-progress project, no stable builds will be provided for n
 
 I realize that this is a strange name for it. However, I don't consider this to be a true fantasy computer or console due to the fact that it runs on a real hardware platform. I also don't consider this to be a "real" operating system due to the fact that all of the low level details are taken care of by Circle, I am simply coupling the Lua interpreter to it. So, "fantasy OS" it is!
 
-# Screenshot
+# Screenshots
 
 ![screenshot of Pineapple running in QEMU](docs/screenshots/screenshot1.png)
+
+![screenshot of Pineapple running in QEMU, showing a rectangle drawing demo](docs/screenshots/screenshot2.png)
 
 # Building
 
