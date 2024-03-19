@@ -7,7 +7,7 @@ CIRCLEHOME = circle-stdlib/libs/circle
 NEWLIBDIR = circle-stdlib/install/$(NEWLIB_ARCH)
 LUADIR = lua-5.4.6/src
 
-OBJS = src/main.o src/kernel.o src/lconsole.o src/lfilesystem.o src/lgfx.o
+OBJS = src/main.o src/kernel.o src/lconsole.o src/lfilesystem.o src/lgfx.o src/lpineapple.o
 
 include $(CIRCLEHOME)/Rules.mk
 

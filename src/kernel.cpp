@@ -25,6 +25,7 @@
 #include "lconsole.h"
 #include "lfilesystem.h"
 #include "lgfx.h"
+#include "lpineapple.h"
 
 extern "C"
 int lua_interface();
@@ -46,7 +47,6 @@ CKernel *CKernel::Get(void) {
 }
 
 CStdlibApp::TShutdownMode CKernel::Run(void) {
-    mLogger.Write(GetKernelName(), LogNotice, "Pineapple compile time: " __DATE__ " " __TIME__);
     mScreen.Write("\n", 1);
     lua_interface();
     return ShutdownHalt;
@@ -77,7 +77,10 @@ int lua_interface() {
     lua_setglobal(state, "filesystem");
     lua_open_gfx(state);
     lua_setglobal(state, "gfx");
+    lua_open_pineapple(state);
+    lua_setglobal(state, "pineapple");
     lua_register(state, "reboot", lua_reboot);
+
     int result = luaL_loadfile(state, BOOT_FILE);
     if (result != LUA_OK && result != LUA_ERRFILE) {
         print_error(state);

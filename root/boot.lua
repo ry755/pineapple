@@ -1,5 +1,6 @@
-_banner = "Pineapple - Lua-based Fantasy OS\n"
-_prompt = "repl> "
+_vermajor, _verminor = pineapple.version()
+_banner = "Pineapple - Lua-based Fantasy OS\nVersion " .. _vermajor .. "." .. _verminor .. "\n"
+_prompt = "\027[36mrepl\027[0m> "
 
 package.path = "?.lua;/sys/?.lua;usb:/sys/?.lua"
 

@@ -1,13 +1,10 @@
 //
-// kernel.h
+/// lpineapple.cpp
 //
-// Circle - A C++ bare metal environment for Raspberry Pi
-// Copyright (C) 2014  R. Stange <rsta2@o2online.de>
-// 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// (at your option) any later version
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -17,23 +14,27 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-#ifndef _kernel_h
-#define _kernel_h
 
-#define PINEAPPLE_VERSION_MAJOR 0
-#define PINEAPPLE_VERSION_MINOR 0
-
-#include "app.h"
 #include <lua.hpp>
 
-class CKernel : public CSquareApp {
-public:
-    CKernel(void);
-    static CKernel *Get(void);
-    TShutdownMode Run(void);
+#include "kernel.h"
 
-private:
-    static CKernel *s_pThis;
+#include "lpineapple.h"
+
+extern "C"
+int lua_pineapple_version(lua_State* state) {
+    lua_pushinteger(state, PINEAPPLE_VERSION_MAJOR);
+    lua_pushinteger(state, PINEAPPLE_VERSION_MINOR);
+    return 2;
+}
+
+luaL_Reg const pineapple_funcs [] = {
+    { "version",          lua_pineapple_version },
+    { NULL,               NULL }
 };
 
-#endif
+extern "C"
+int lua_open_pineapple(lua_State* state) {
+    luaL_newlib(state, pineapple_funcs);
+    return 1;
+}
